@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════
+   RESPONSIVE.CSS — Mobile-first breakpoints
+   CircuitLab Junior
+═══════════════════════════════════════════ */
+
+/* ── Base: Mobile first (< 480px) ── */
+@media (max-width: 479px) {
+  :root {
+    --pad-page: 14px;
+    --pad-card: 16px;
+  }
+
+  .home-content { padding: 36px var(--pad-page) 24px; }
+
+  .logo-text  { font-size: 21px; }
+  .logo-icon  { width: 44px; height: 44px; font-size: 22px; }
+  .home-desc  { font-size: 14px; }
+
+  .hstat      { padding: 8px 14px; min-width: 60px; }
+  .hstat-n    { font-size: 17px; }
+
+  .curriculum-preview { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .lh-title   { font-size: 19px; }
+
+  /* Stepper: hide labels on tiny screens, show only dots */
+  .step-lbl   { display: none; }
+  .step-dot   { width: 24px; height: 24px; font-size: 10px; }
+  .step-line  { margin: 0 4px; }
+
+  /* Quiz: single column on mobile */
+  .quiz-opts  { grid-template-columns: 1fr; }
+
+  /* Particle grid: single column */
+  .particle-grid { grid-template-columns: 1fr; gap: 8px; }
+  .particle-card { display: flex; align-items: center; gap: 12px; padding: 10px 14px; }
+  .particle-dot  { width: 34px; height: 34px; font-size: 15px; margin: 0; flex-shrink: 0; }
+  .particle-name { font-size: 13px; }
+  .particle-meta { font-size: 11px; }
+
+  /* Charge demo: column stack */
+  .charge-demo   { flex-direction: column; }
+  .charge-pair   { justify-content: flex-start; }
+
+  /* Fact row */
+  .fact-row  { grid-template-columns: 1fr 1fr; }
+
+  /* Atom */
+  .atom-controls { gap: 6px; }
+  .atom-btn  { font-size: 11px; padding: 5px 10px; }
+
+  /* Materials grid */
+  .materials-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+  .mat-emoji  { font-size: 20px; }
+
+  /* Sort buttons */
+  .sort-controls { gap: 6px; }
+  .sort-btn   { font-size: 11px; padding: 7px 12px; }
+
+  /* Nav row */
+  .lesson-nav { gap: 8px; }
+  .btn-ghost, .btn-dark { font-size: 12px; padding: 9px 14px; }
+
+  /* Summary */
+  .sum-trophy { font-size: 44px; }
+  .sum-title  { font-size: 19px; }
+  .sum-score  { font-size: 34px; }
+  .sum-btns   { flex-direction: column; align-items: center; }
+  .sum-btns button { width: 100%; max-width: 280px; }
+
+  /* Curriculum list */
+  .unit-group-header { padding: 12px 14px; }
+  .ugh-name  { font-size: 14px; }
+  .lesson-row { padding: 12px 14px; }
+  .lr-title   { font-size: 13px; }
+
+  /* Topbar */
+  .topbar { padding: 10px var(--pad-page); }
+  .topbar-title { font-size: 13px; }
+  .back-btn { font-size: 12px; }
+}
+
+/* ── Small mobile (480px–639px) ── */
+@media (min-width: 480px) and (max-width: 639px) {
+  :root {
+    --pad-page: 16px;
+    --pad-card: 18px;
+  }
+
+  .curriculum-preview { grid-template-columns: 1fr 1fr; }
+  .quiz-opts { grid-template-columns: 1fr; }
+  .particle-grid { grid-template-columns: 1fr 1fr; }
+
+  .step-lbl { display: none; }
+
+  .materials-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+}
+
+/* ── Tablet (640px–1023px) ── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  :root {
+    --pad-page: 20px;
+  }
+
+  .curriculum-preview { grid-template-columns: repeat(3, 1fr); }
+  .home-content { padding: 52px var(--pad-page) 36px; }
+  .particle-grid { grid-template-columns: repeat(3, 1fr); }
+  .quiz-opts { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Desktop (1024px+) ── */
+@media (min-width: 1024px) {
+  :root {
+    --pad-page: 24px;
+    --max-w: 760px;
+  }
+
+  .curriculum-preview { grid-template-columns: repeat(4, 1fr); }
+  .home-content { padding: 64px var(--pad-page) 40px; }
+
+  .step-lbl { display: inline; }
+
+  .materials-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+
+/* ── Wide screens (1280px+) ── */
+@media (min-width: 1280px) {
+  :root { --max-w: 800px; }
+}
+
+/* ── Touch device optimisations ── */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary, .btn-ghost, .btn-dark {
+    min-height: 48px; /* Apple HIG touch target */
+  }
+  .qopt { min-height: 48px; }
+  .sort-btn { min-height: 44px; }
+  .mat-tile { padding: 14px 8px; }
+  .lesson-row { padding: 16px var(--pad-page); }
+  .unit-group-header { padding: 16px 18px; }
+  .back-btn { min-height: 44px; min-width: 44px; display: flex; align-items: center; }
+}
+
+/* ── Safe area insets (notched iPhones etc.) ── */
+@supports (padding: max(0px)) {
+  .topbar {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-left: max(var(--pad-page), env(safe-area-inset-left));
+    padding-right: max(var(--pad-page), env(safe-area-inset-right));
+  }
+  .lesson-wrap, .curriculum-list, .home-content, .curriculum-preview {
+    padding-left:  max(var(--pad-page), env(safe-area-inset-left));
+    padding-right: max(var(--pad-page), env(safe-area-inset-right));
+  }
+  .summary-wrap {
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+  }
+  .toast {
+    bottom: max(24px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  .topbar, .home-bg-grid, .toast { display: none !important; }
+  .screen { display: block !important; }
+  .card, .quiz-card { break-inside: avoid; }
+}
