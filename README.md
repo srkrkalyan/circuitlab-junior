@@ -2,7 +2,7 @@
 
 > An interactive electronics curriculum for ages 10–15. Free, no login required.
 
-**Live Demo:** https://yourusername.github.io/circuitlab-junior
+**Live Demo:** TBD
 
 ---
 

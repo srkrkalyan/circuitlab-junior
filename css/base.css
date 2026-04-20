@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════
+   BASE.CSS — Reset · Tokens · Typography
+   CircuitLab Junior
+═══════════════════════════════════════════ */
+
+:root {
+  /* Brand */
+  --clr-ink:        #0d1b2a;
+  --clr-accent:     #7ED321;
+  --clr-accent-dim: #639922;
+  --clr-gold:       #F5A623;
+  --clr-gold-dim:   #EF9F27;
+  --clr-blue:       #378ADD;
+  --clr-blue-dim:   #185FA5;
+  --clr-red:        #D85A30;
+  --clr-purple:     #7F77DD;
+
+  /* Surfaces */
+  --bg-page:        #f4f3ef;
+  --bg-card:        #ffffff;
+  --bg-card-alt:    #f8f7f3;
+  --bg-dark:        #0d1b2a;
+  --bg-dark-mid:    #16213e;
+
+  /* Text */
+  --txt-primary:    #0d1b2a;
+  --txt-secondary:  #5a6a7a;
+  --txt-muted:      #8a9aaa;
+  --txt-on-dark:    #ffffff;
+  --txt-on-accent:  #0d1b2a;
+
+  /* Borders */
+  --border:         rgba(0,0,0,0.10);
+  --border-strong:  rgba(0,0,0,0.18);
+
+  /* Radius */
+  --r-sm:  6px;
+  --r-md:  10px;
+  --r-lg:  14px;
+  --r-xl:  20px;
+  --r-pill:99px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+
+  /* Layout */
+  --max-w:    720px;
+  --pad-page: 20px;
+  --pad-card: 20px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:  0.22s;
+
+  /* Fonts */
+  --font-body:  'Nunito', sans-serif;
+  --font-mono:  'Space Mono', monospace;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page:       #0a1628;
+    --bg-card:       #0f1f36;
+    --bg-card-alt:   #122040;
+    --bg-dark:       #060e1c;
+    --bg-dark-mid:   #0d1b2a;
+
+    --txt-primary:   #e8edf2;
+    --txt-secondary: #8fa5bc;
+    --txt-muted:     #5a7a96;
+    --txt-on-dark:   #ffffff;
+
+    --border:        rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+  }
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-page);
+  color: var(--txt-primary);
+  line-height: 1.6;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+button { font-family: var(--font-body); cursor: pointer; }
+a { color: var(--clr-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; }
+
+/* ── Accessibility ── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 2px;
+}
+
+/* ── App shell ── */
+#app {
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* ── Screen system ── */
+.screen {
+  display: none;
+  min-height: 100dvh;
+  animation: screenIn var(--dur) var(--ease);
+}
+.screen.active { display: block; }
+
+@keyframes screenIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Topbar ── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px var(--pad-page);
+  background: var(--bg-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.topbar-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--txt-on-dark);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar-score {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--clr-accent);
+  background: rgba(126,211,33,0.12);
+  border: 1px solid rgba(126,211,33,0.25);
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.back-btn {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  background: none;
+  border: none;
+  padding: 4px 0;
+  white-space: nowrap;
+  transition: color var(--dur);
+}
+.back-btn:hover { color: #fff; }
+
+/* ── Utility classes ── */
+.text-muted   { color: var(--txt-secondary); }
+.text-accent  { color: var(--clr-accent); }
+.text-gold    { color: var(--clr-gold); }
+.text-mono    { font-family: var(--font-mono); }
+.fw-800       { font-weight: 800; }
+.fw-900       { font-weight: 900; }
+.mt-8  { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-20 { margin-top: 20px; }
